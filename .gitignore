@@ -9,3 +9,6 @@
 /*.egg-info
 
 .DS_Store
+
+# Code from other repositories
+ExampleCode
