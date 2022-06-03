@@ -23,8 +23,8 @@ def genKeyPairFromSeed(seed:str) -> KeyPair:
 		raise Exception("The seed value has to be a string")
 
 	seed = seed.encode("utf-8") 								# <---- Not in typescript code.
-	key = pbkdf2_hmac("sha256", seed, "", 1000, 32 * 8)
-	return KeyPair(nacl.bindings.crypto_sign_seed_keypair(key))
+	derivedKey = pbkdf2_hmac("sha256", seed, "", 1000, 32 * 8)
+	return KeyPair(nacl.bindings.crypto_sign_seed_keypair(derivedKey))
 	# TypeScript Code
   # const derivedKeyHex = codec.hex.fromBits(derivedKey);
   # const { publicKey, secretKey } = sign.keyPair.fromSeed(hexToUint8Array(derivedKeyHex));
